@@ -31,6 +31,42 @@ declare interface IAppContext {
   isLoggedIn: () => boolean;
 }
 
+declare interface ITuk {
+  _id: string;
+  nama: string;
+}
+
+declare interface IJudul {
+  _id: string;
+  judul: string;
+  id_tuk: IUnit;
+}
+
+declare interface ISkema {
+  _id: string;
+  nama: string;
+  id_tuk: ITuk | string;
+}
+
+declare interface IUnit {
+  _id: string;
+  kode: string;
+  judul: string;
+  id_skema: ISkema | string;
+}
+
+declare interface IElemen {
+  _id: string;
+  judul_elemen: string;
+  id_unit: IUnit;
+}
+
+declare interface IKuk {
+  _id: string;
+  pertanyaan: pertanyaan;
+  id_elemen: IElemen;
+}
+
 declare interface IPemohon {
   _id: string;
   username: string;
@@ -67,4 +103,13 @@ declare interface IBerkas {
   pas_foto: string;
   laporan_hasil_studi: string;
   surat_keterangan: string;
+}
+
+declare interface IAsesmen {
+  _id: string;
+  judul_elemen: string;
+  kode_unit: string;
+  judul_unit: string;
+  penilaian: string;
+  bukti: string;
 }

@@ -3,9 +3,11 @@ import { Header } from "semantic-ui-react"
 import DataTable from "../../components/DataTable"
 import ErrorMessage from "../../components/ErrorMessage"
 import { PemohonService } from "../../services/PemohonService"
+import { UnitService } from "../../services/UnitService";
 
 interface IState {
     pemohon: IPemohon[]
+    unit: IUnit[]
     loading: boolean
     error?: Error
 }
@@ -21,13 +23,25 @@ const fields: IField[] = [
 export default class Pemohon extends Component<{}, IState> {
     public state: IState = {
         pemohon: [],
+        unit: [],
         loading: false,
     }
 
     public PemohonService = new PemohonService()
+    public unitService = new UnitService()
 
     public componentDidMount() {
         this.getPemohon()
+        this.getUnit()
+    }
+
+    public getUnit() {
+        this.setState({ loading: true })
+        this.unitService
+            .get()
+            .then((unit) => this.setState({ unit }))
+            .catch((error) => this.setState({ error }))
+            .finally(() => this.setState({ loading: false }))
     }
 
     public getPemohon() {

@@ -3,6 +3,7 @@ import Berkas from "../pages/Berkas";
 import Pekerjaan from "../pages/Pekerjaan";
 import Login from "../pages/Login";
 import Pemohon from "../pages/Pemohon";
+import Asesmen from "../pages/Asesmen";
 
 const routes: IRoute[] = [
   {
@@ -13,6 +14,14 @@ const routes: IRoute[] = [
     path: "/berkas",
     private: true,
     hide: true
+  },
+  {
+    name: "asesmen",
+    component: Asesmen,
+    label: "Asesmen",
+    icon: "file",
+    path: "/asesmen",
+    private: true
   },
   {
     name: "pemohon",
